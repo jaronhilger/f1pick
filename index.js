@@ -1,5 +1,4 @@
 'use strict';
-//Not sure what I'm doing but there is one way to find out.
 
 var fs = require('fs');
 var path = require('path');
