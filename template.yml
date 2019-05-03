@@ -40,11 +40,11 @@ Resources:
           Properties:
             Path: /
             Method: get
-            Auth:
-              DefaultAuthorizer: MyCognitoAuth # OPTIONAL, if you use IAM permissions, specify AWS_IAM.
-              Authorizers:
-                MyCognitoAuth:
-                  UserPoolArn: !GetAtt MyCognitoUserPool.Arn # Can also accept an array
+            # Auth:
+            #   DefaultAuthorizer: MyCognitoAuth # OPTIONAL, if you use IAM permissions, specify AWS_IAM.
+            #   Authorizers:
+            #     MyCognitoAuth:
+            #       UserPoolArn: !GetAtt MyCognitoUserPool.Arn # Can also accept an array
                   # Identity: # OPTIONAL
                   #   Header: MyAuthorizationHeader # OPTIONAL; Default: 'Authorization'
                   #   ValidationExpression: myauthvalidationexpression # OPTIONAL
