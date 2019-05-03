@@ -19,7 +19,13 @@ exports.get = function(event, context, callback) {
   // if (ParsedJSON.requestContext.path) {console.log(ParsedJSON.requestContext.path)};
 
   // var contents = fs.readFileSync(`public${path.sep}index.html`);
-  var contents = fs.readFileSync(`public${event.path}.html`);
+  let filePath = ''
+  if (event.path === '/') {
+      filePath = `public${path.sep}index.html`
+  } else {filePath = `public${event.path}.html`};
+  console.log(filePath);
+  var contents = fs.readFileSync(filePath);
+  
   var result = {
     statusCode: 200,
     body: contents.toString(),
