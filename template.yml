@@ -39,6 +39,7 @@ Resources:
           Type: Api
           Properties:
             Path: /
+            Method: get
             Path: /{proxy+}
             Method: get
             # Auth:
