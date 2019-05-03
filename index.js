@@ -11,8 +11,10 @@ exports.get = function(event, context, callback) {
   console.log("## CONTEXT");
   console.log(JSON.stringify(context, null, 2));
   let ParsedJSON = JSON.parse(JSON.stringify(event));
-  console.log("## REQUEST CONTEXT PATH");
-  console.log(JSON.stringify(ParsedJSON.requestContext.path));
+  console.log("## REQUEST CONTEXT");
+  console.log(ParsedJSON.requestContext);
+  // console.log("## REQUEST CONTEXT PATH");
+  // if (ParsedJSON.requestContext.path) {console.log(ParsedJSON.requestContext.path)};
 
   var contents = fs.readFileSync(`public${path.sep}index.html`);
   var result = {
