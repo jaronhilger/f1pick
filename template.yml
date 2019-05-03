@@ -38,7 +38,12 @@ Resources:
         GetEvent:
           Type: Api
           Properties:
-            Path: '{proxy+}'
+            Path: /
+            Method: get
+        GetSubPage:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
             Method: get
             # Auth:
             #   DefaultAuthorizer: MyCognitoAuth # OPTIONAL, if you use IAM permissions, specify AWS_IAM.
