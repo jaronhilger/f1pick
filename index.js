@@ -5,7 +5,9 @@ var path = require('path');
 
 exports.get = function(event, context, callback) {
   console.log('path');
-  console.log(path);
+  console.log(path.basename);
+  console.log(path.extname);
+  console.log(path.parse);
 
   var contents = fs.readFileSync(`public${path.sep}index.html`);
   var result = {
