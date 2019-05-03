@@ -8,6 +8,8 @@ exports.get = function(event, context, callback) {
   // console.log(JSON.stringify(process.env, null, 2));
   console.log("## EVENT");
   console.log(JSON.stringify(event, null, 2));
+  console.log("## EVENT PATH");
+  console.log(JSON.stringify(event.path, null, 2));
   console.log("## CONTEXT");
   console.log(JSON.stringify(context, null, 2));
   let ParsedJSON = JSON.parse(JSON.stringify(event));
