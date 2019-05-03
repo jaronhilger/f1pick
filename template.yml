@@ -7,6 +7,13 @@ Parameters:
   ProjectId:
     Type: String
     Description: AWS CodeStar projectID used to associate new resources to team members
+  CognitoUserPoolName:
+    Type: String
+    Default: MyUserPool
+  
+  CognitoUserPoolClientName:
+    Type: String
+    Default: MyUserPoolClient
 
 # Enable blue/green deployments using this Globals section. For instructions, see the AWS CodeStar User Guide:
 # https://docs.aws.amazon.com/codestar/latest/userguide/how-to-modify-serverless-project.html?icmpid=docs_acs_rm_tr
@@ -33,11 +40,33 @@ Resources:
           Properties:
             Path: /
             Method: get
-            # Auth:
-            #   DefaultAuthorizer: MyCognitoAuth # OPTIONAL, if you use IAM permissions, specify AWS_IAM.
-            #   Authorizers:
-            #     MyCognitoAuth:
-            #       UserPoolArn: !GetAtt MyCognitoUserPool.Arn # Can also accept an array
-            #       Identity: # OPTIONAL
-            #         Header: MyAuthorizationHeader # OPTIONAL; Default: 'Authorization'
-            #         ValidationExpression: myauthvalidationexpression # OPTIONAL
+            Auth:
+              DefaultAuthorizer: MyCognitoAuth # OPTIONAL, if you use IAM permissions, specify AWS_IAM.
+              Authorizers:
+                MyCognitoAuth:
+                  UserPoolArn: !GetAtt MyCognitoUserPool.Arn # Can also accept an array
+                  # Identity: # OPTIONAL
+                  #   Header: MyAuthorizationHeader # OPTIONAL; Default: 'Authorization'
+                  #   ValidationExpression: myauthvalidationexpression # OPTIONAL
+  MyCognitoUserPool:
+  Type: AWS::Cognito::UserPool
+  Properties:
+    UserPoolName: !Ref CognitoUserPoolName
+    # LambdaConfig:
+    #   PreSignUp: !GetAtt PreSignupLambdaFunction.Arn
+    Policies:
+      PasswordPolicy:
+        MinimumLength: 12
+    UsernameAttributes:
+      - email
+    Schema:
+      - AttributeDataType: String
+        Name: email
+        Required: false
+
+MyCognitoUserPoolClient:
+  Type: AWS::Cognito::UserPoolClient
+  Properties:
+    UserPoolId: !Ref MyCognitoUserPool
+    ClientName: !Ref CognitoUserPoolClientName
+    GenerateSecret: false
