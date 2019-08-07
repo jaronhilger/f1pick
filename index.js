@@ -21,7 +21,7 @@ exports.get = function(event, context, callback) {
   // var contents = fs.readFileSync(`public${path.sep}index.html`);
   let filePath = ''
   if (event.path === '/') {
-      filePath = `public${path.sep}index.html`
+      filePath = `public${path.sep}index2.html`
   } else {filePath = `public${event.path}.html`};
   console.log(filePath);
   var contents = fs.readFileSync(filePath);
