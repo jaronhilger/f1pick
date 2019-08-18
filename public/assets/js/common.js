@@ -1,15 +1,15 @@
 document.getElementById("header").innerHTML = ' \
     <nav class="website-nav"> \
         <ul> \
-            <li><a class="home-link"href="./picks2.html">Picks</a></li> \
-            <li><a href="./standings2.html">Standings</a></li> \
-            <li><a href="./index2.html" onclick="signOut()">Log out</a></li> \
+            <li><a class="home-link"href="./picks.html">Picks</a></li> \
+            <li><a href="./standings.html">Standings</a></li> \
+            <li><a href="./index.html" onclick="signOut()">Log out</a></li> \
         </ul> \
     </nav>'
 
 document.getElementById("footer").innerHTML = '<p class="footer-contents">Let\'s do this!</p>'
 
-var homePage = "index2.html"
+var homePage = "index.html"
 
 var data = { 
     UserPoolId : _config.cognito.userPoolId,
@@ -40,7 +40,7 @@ function signInButton() {
         onSuccess: function (result) {
             var accessToken = result.getAccessToken().getJwtToken();
             console.log(accessToken);
-            location.href = "./picks2.html"
+            location.href = "./picks.html"
         },
         onFailure: function(err) {
             alert(err.message || JSON.stringify(err));
@@ -85,6 +85,6 @@ window.onload = function(){
         }
         // console.log(location.pathname);
         // console.log(document.documentURI);
-        // if (location.href != 'index2.html') {location.href = "./index2.html"}
+        // if (location.href != 'index.html') {location.href = "./index.html"}
     }
 }

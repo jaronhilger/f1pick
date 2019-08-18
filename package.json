@@ -1,6 +1,6 @@
 {
-    "name": "hello-world",
-    "description": "Sample NodeJs web application",
+    "name": "f1App",
+    "description": "App to run the best F1 pool in the world.",
     "version": "0.0.1",
     "private": true,
     "devDependencies": {
