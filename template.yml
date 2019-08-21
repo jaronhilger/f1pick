@@ -11,11 +11,10 @@ Parameters:
 # Enable blue/green deployments using this Globals section. For instructions, see the AWS CodeStar User Guide:
 # https://docs.aws.amazon.com/codestar/latest/userguide/how-to-modify-serverless-project.html?icmpid=docs_acs_rm_tr
 #
-# Globals:
-#   Api:
-#     EndpointConfiguration: REGIONAL
-#     Cors: '*'
-
+Globals:
+  Api:
+    Cors: 
+      AllowOrigin: "'*'"
 #   Function:
 #     AutoPublishAlias: live
 #     DeploymentPreference:
@@ -37,4 +36,3 @@ Resources:
           Properties:
             Path: /
             Method: get
-            Cors: "*"
