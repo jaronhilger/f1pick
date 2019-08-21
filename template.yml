@@ -14,8 +14,7 @@ Parameters:
 Globals:
   Api:
     EndpointConfiguration: REGIONAL
-    Cors: 
-      AllowOrigin: '*'
+    Cors: '*'
 
 #   Function:
 #     AutoPublishAlias: live
