@@ -1,0 +1,50 @@
+
+<body>
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+    <script>
+    
+    function randomNumber(low, high) {
+      return Math.floor(Math.random() * (high - low) + low)
+    }
+    
+    var Data = {
+      quotes: {
+        list: null,
+          error: "",
+          fetch: function() {
+            randomQuote = randomNumber(1,20)
+            m.request({
+             method: "GET",
+             url: "https://fu9wdatrml.execute-api.us-east-1.amazonaws.com/Prod/",
+            })
+            .then(function(items) {
+              Data.quotes.list = items
+            })
+            .catch(function(e) {
+              Data.quotes.error = e.message
+            })
+          }
+      }
+    }
+    
+    var Quotes = {
+    oninit: Data.quotes.fetch,
+            view: function(vnode) {
+              return Data.quotes.error ? [
+                m(".error", Data.quotes.error)
+                ] : Data.quotes.list ? [
+                m("main", [
+                    m("div", {style: "font-style: normal; text-align: left"}, Data.quotes.list[randomQuote].quote),
+                    m("div", {style: "font-style: italic; text-align: right"}, "-- "+Data.quotes.list[randomQuote].attribution),
+                    ])
+                ] : m(".loading-icon")
+            }
+    }
+    
+    m.route(document.body, "/", {
+        "/": Quotes
+        })
+    
+    </script>
+    </body>
+    

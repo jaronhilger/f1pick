@@ -29,7 +29,11 @@ exports.get = function(event, context, callback) {
   var result = {
     statusCode: 200,
     body: JSON.stringify(event, null, 2),
-    headers: {'content-type': 'text/html'}
+    headers: {
+      'content-type': 'text/html',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true
+      }
   };
 
   callback(null, result);
