@@ -51,9 +51,7 @@ Resources:
           Properties:
             Path: /user/{userId}
             Method: get
-      # Role:
-      #   Fn::ImportValue:
-      #     !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+      Role: 'CodeStarWorker-f1pick-Lambda'
   DynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
