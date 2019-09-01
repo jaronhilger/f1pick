@@ -40,20 +40,20 @@ Resources:
           Properties:
             Path: /
             Method: get
-  GetUserData:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: user.get
-      Runtime: nodejs10.x
-      Role:
-        Fn::ImportValue:
-          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
-      Events:
-        GetEvent:
-          Type: Api
-          Properties:
-            Path: /user/{userId}
-            Method: get
+  # GetUserData:
+  #   Type: AWS::Serverless::Function
+  #   Properties:
+  #     Handler: user.get
+  #     Runtime: nodejs10.x
+  #     Role:
+  #       Fn::ImportValue:
+  #         !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+  #     Events:
+  #       GetEvent:
+  #         Type: Api
+  #         Properties:
+  #           Path: /user/{userId}
+  #           Method: get
   DynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
