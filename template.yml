@@ -1,3 +1,7 @@
+# Web URL: https://aws-codestar-us-east-1-940495839641-f1pick-app.s3.amazonaws.com/public/index.html
+# API Endpoint: https://fu9wdatrml.execute-api.us-east-1.amazonaws.com/Stage/ | https://fu9wdatrml.execute-api.us-east-1.amazonaws.com/Prod/
+# I want to create a Dyn table, put some data in there and display it on the page
+
 AWSTemplateFormatVersion: 2010-09-09
 Transform:
 - AWS::Serverless-2016-10-31
@@ -36,3 +40,28 @@ Resources:
           Properties:
             Path: /
             Method: get
+  GetUserData:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: user.get
+      Runtime: nodejs10.x
+      Role:
+        Fn::ImportValue:
+          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /user/{userId}
+            Method: get
+  DynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: f1PickUserData
+      AttributeDefinitions: 
+        - AttributeName: pk
+          AttributeType: S
+      KeySchema: 
+        - AttributeName: pk
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
