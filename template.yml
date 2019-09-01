@@ -51,7 +51,7 @@ Resources:
           Properties:
             Path: /user/{userId}
             Method: get
-      Role: 'CodeStarWorker-f1pick-Lambda'
+      Role: 'arn:aws:iam::940495839641:role/CodeStarWorker-f1pick-Lambda'
   DynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
