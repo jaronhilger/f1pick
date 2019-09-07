@@ -73,3 +73,23 @@ Resources:
         - AttributeName: pk
           KeyType: HASH
       BillingMode: PAY_PER_REQUEST
+  CognitoUserAuthorizer:
+    Type: AWS::ApiGateway::Authorizer
+    Properties: 
+      IdentitySource: 'method.request.header.Authorization'
+      Name: cognitoUserAuthorizer
+      # ProviderARNs:
+      #   - 'arn:aws:cognito-idp:{region}:{userpoolIdentifier}'
+      RestApiId: !Ref ServerlessRestApi
+      Type: COGNITO_USER_POOLS
+      # AuthorizerCredentials: null
+      AuthorizerResultTtlInSeconds: 30
+      # AuthorizerUri: null
+      # AuthType: null
+      # IdentitySource: COGNITO_USER_POOLS
+      # IdentityValidationExpression: String
+      # Name: cognitoUserAuthorizer
+      ProviderARNs: 
+        - arn:aws:cognito-idp:us-east-1:940495839641:userpool/us-east-1_ixfXs740V
+      # RestApiId: String
+      # Type: COGNITO_USER_POOLS
