@@ -18,7 +18,7 @@ Parameters:
 Globals:
   Api:
     Cors: 
-      AllowOrigin: "'*'"
+      AllowOrigin: '*'
 #   Function:
 #     AutoPublishAlias: live
 #     DeploymentPreference:
@@ -30,7 +30,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.get
-      Runtime: nodejs8.10
+      Runtime: nodejs10.x
       Role:
         Fn::ImportValue:
           !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
