@@ -18,7 +18,7 @@ Parameters:
 Globals:
   Api:
     Cors: 
-      AllowOrigin: '*'
+      AllowOrigin: "'*'"
 #   Function:
 #     AutoPublishAlias: live
 #     DeploymentPreference:
