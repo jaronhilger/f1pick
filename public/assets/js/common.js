@@ -22,28 +22,6 @@ document.getElementById("footer").innerHTML = '<p class="footer-contents">Let\'s
 
 var homePage = "index.html"
 
-var apiEndpoint = 'https://fu9wdatrml.execute-api.us-east-1.amazonaws.com/Prod/'
-
-// https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/
-const app = document.getElementById('helloWorld')
-if(app){
-    var request = new XMLHttpRequest();
-    request.open('GET', apiEndpoint, true);
-    request.onload = function() {
-        var responseData = this.response
-        if (request.status >= 200 && request.status < 400) {
-            const p = document.createElement('p')
-            p.textContent = responseData
-            app.appendChild(p)
-        } else {
-            const errorMessage = document.createElement('marquee')
-            errorMessage.textContent = `Gah, it's not working!`
-            app.appendChild(errorMessage)
-        }
-    }
-    request.send()
-}
-//end data access
 
 var data = { 
     UserPoolId : _config.cognito.userPoolId,
@@ -125,3 +103,47 @@ window.onload = function(){
         };
     };
 }
+
+var apiEndpoint = 'https://fu9wdatrml.execute-api.us-east-1.amazonaws.com/Prod/'
+
+// https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/
+const app = document.getElementById('helloWorld')
+if(app){
+    var request = new XMLHttpRequest();
+    request.open('GET', apiEndpoint, true);
+    request.onload = function() {
+        var responseData = this.response
+        if (request.status >= 200 && request.status < 400) {
+            const p = document.createElement('p')
+            p.textContent = responseData
+            app.appendChild(p)
+        } else {
+            const errorMessage = document.createElement('marquee')
+            errorMessage.textContent = `Gah, it's not working!`
+            app.appendChild(errorMessage)
+        }
+    }
+    request.send()
+}
+//end data access
+
+const appGetUserData = document.getElementById('getUserData')
+if(appGetUserData){
+    var requestUrl = apiEndpoint + 'user/1234'
+    var request = new XMLHttpRequest();
+    request.open('GET', requestUrl , true);
+    request.onload = function() {
+        var responseData = this.response
+        if (request.status >= 200 && request.status < 400) {
+            const p = document.createElement('p')
+            p.textContent = responseData
+            appGetUserData.appendChild(p)
+        } else {
+            const errorMessage = document.createElement('marquee')
+            errorMessage.textContent = `Gah, it's not working!`
+            appGetUserData.appendChild(errorMessage)
+        }
+    }
+    request.send()
+}
+//end data access

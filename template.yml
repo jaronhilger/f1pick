@@ -51,6 +51,17 @@ Resources:
           Properties:
             Path: /user
             Method: get
+  GetUserDataByUserId:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: user.get
+      Runtime: nodejs10.x
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /user/{userId}
+            Method: get
   DynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
