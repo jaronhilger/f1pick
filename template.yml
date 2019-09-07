@@ -49,7 +49,7 @@ Resources:
         GetEvent:
           Type: Api
           Properties:
-            Path: /user/{userId}
+            Path: /user
             Method: get
   DynamoDBTable:
     Type: AWS::DynamoDB::Table
